@@ -8,6 +8,7 @@ body:
       label: Which control?
       options:
         - File Drop Zone
+        - Signature Pad
         - Idea for a new control
     validations:
       required: true

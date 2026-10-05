@@ -18,6 +18,7 @@
 | Control | What it does | Docs | Status |
 |---|---|---|---|
 | [**File Drop Zone**](FileDropZone/) | Drag and drop (or paste) files onto a form to save them as Note attachments on the record. Large files upload in blocks with progress and cancel; follows the environment's file size and blocked-type rules; handles duplicates; lists, previews, downloads and deletes existing attachments. | [User guide](FileDropZone/docs/user-guide.md) · [Word](FileDropZone/docs/FileDropZone-User-Guide.docx) · [PDF](FileDropZone/docs/FileDropZone-User-Guide.pdf) · [Setup walkthrough](FileDropZone/docs/setup-walkthrough.html) | [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml) |
+| [**Signature Pad**](SignaturePad/) | Sign or draw with mouse, pen or touch and save the picture as a PNG Note attachment. Eraser to rub out and redraw part of it, undo / redo / clear, a short note with each image (*First floor*, signer's name...), edit, download and delete saved images, newest first. Signature or Drawing mode. | [User guide](SignaturePad/docs/user-guide.md) · [Word](SignaturePad/docs/SignaturePad-User-Guide.docx) · [PDF](SignaturePad/docs/SignaturePad-User-Guide.pdf) · [Setup walkthrough](SignaturePad/docs/setup-walkthrough.html) | [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/signature-pad.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/signature-pad.yml) |
 
 <p align="center">
   <img src="FileDropZone/docs/img/control-uploading.png" width="720" alt="File Drop Zone uploading files" />
@@ -36,6 +37,7 @@ Bugs, ideas, or a control you wish existed? [Open an issue](https://github.com/a
 ```
 PCF-Controls/
 ├── FileDropZone/      one folder per control: PCF project, docs/, README, CHANGELOG
+├── SignaturePad/
 ├── .github/           issue forms and one build workflow per control
 └── LICENSE            MIT, applies to all controls
 ```

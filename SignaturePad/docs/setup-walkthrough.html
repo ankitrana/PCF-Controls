@@ -1,0 +1,503 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Signature Pad Setup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#f4f6f8; --surface:#ffffff; --ink:#18202b; --muted:#566273; --rule:#dde2e8;
+  --accent:#0d5f6b; --accent-soft:#e2f0f1; --code-bg:#eef1f4; --warn:#8a5a00; --warn-soft:#fff4dc;
+  --pin:#d13438;
+  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#11161c; --surface:#19212a; --ink:#e6ebf0; --muted:#9aa6b4; --rule:#2c3743;
+    --accent:#5fc3cf; --accent-soft:#16343a; --code-bg:#0d1217; --warn:#f0c46a; --warn-soft:#3a2f17; --pin:#ff6b6e;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#11161c; --surface:#19212a; --ink:#e6ebf0; --muted:#9aa6b4; --rule:#2c3743;
+  --accent:#5fc3cf; --accent-soft:#16343a; --code-bg:#0d1217; --warn:#f0c46a; --warn-soft:#3a2f17; --pin:#ff6b6e;
+  color-scheme:dark;
+}
+body{background:var(--ground);color:var(--ink);font:15px/1.6 var(--sans)}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:20px;padding-block:36px 72px;display:flex;flex-direction:column;gap:52px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:30px;font-weight:600;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:600}
+h3{font-size:17px;font-weight:600}
+p{margin:0;max-width:70ch}
+.lede{color:var(--muted);font-size:16px;margin-top:8px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+section{display:flex;flex-direction:column;gap:16px}
+code{font-family:var(--mono);font-size:13px;background:var(--code-bg);padding:1px 5px;border-radius:4px}
+.note{background:var(--warn-soft);border-left:3px solid var(--warn);padding:10px 14px;border-radius:0 6px 6px 0;max-width:76ch}
+.note b{color:var(--warn)}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px}
+nav.toc a{font:500 13px var(--sans);color:var(--ink);text-decoration:none;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:5px 11px}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+
+/* real screenshots */
+.shots{display:grid;grid-template-columns:1fr;gap:22px}
+figure{margin:0;display:flex;flex-direction:column;gap:8px}
+figure img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--rule);background:#fff;box-shadow:0 6px 22px rgba(16,24,40,.08)}
+figcaption{color:var(--muted);font-size:14px;max-width:80ch}
+figcaption b{color:var(--ink)}
+.tag{display:inline-block;font:600 11px var(--sans);letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:4px;vertical-align:1px;margin-right:6px}
+.tag.real{background:#dff6dd;color:#0e700e}
+.tag.ill{background:var(--accent-soft);color:var(--accent)}
+.preview-row{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:start}
+@media (max-width:760px){.preview-row{grid-template-columns:1fr}}
+.states{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.states{grid-template-columns:1fr}}
+
+/* step layout */
+.step{display:grid;grid-template-columns:44px 1fr;gap:6px 16px}
+.step>.num{grid-row:1/span 4;width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--surface);font-weight:600;display:grid;place-items:center;font-size:16px}
+.step>*:not(.num){grid-column:2}
+.step ol,.step ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px;max-width:76ch}
+.legend{list-style:none;padding:0 !important;margin:0}
+.legend li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+.legend .p{width:20px;height:20px;border-radius:50%;background:var(--pin);color:#fff;font:600 11px/20px var(--sans);text-align:center;margin-top:2px}
+.type{font-family:var(--mono);font-size:13px;background:var(--code-bg);border:1px dashed var(--accent);padding:0 5px;border-radius:4px}
+pre.cmd{background:#0f1720;color:#d8e2ec;border-radius:8px;padding:14px 16px;margin:0;overflow-x:auto;font:13px/1.6 var(--mono)}
+pre.cmd .c{color:#7f8fa3}
+pre.cmd .ok{color:#7ddc8a}
+
+/* ---- illustrated screens: always light, like screenshots ---- */
+.scr-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--rule);box-shadow:0 8px 26px rgba(16,24,40,.10)}
+.scr{position:relative;min-width:700px;background:#faf9f8;color:#242424;font:13px/1.4 "Segoe UI",-apple-system,Roboto,sans-serif}
+.scr.sm{min-width:460px}
+.addr{display:flex;align-items:center;gap:8px;background:#eceff3;border-bottom:1px solid #d6dbe1;padding:6px 10px;font-size:12px;color:#555}
+.addr .dots{display:flex;gap:5px}.addr .dots i{width:9px;height:9px;border-radius:50%;background:#c9ced6;display:block}
+.addr .url{background:#fff;border:1px solid #d6dbe1;border-radius:12px;padding:2px 10px;flex:1}
+.bar{background:#1f2a37;color:#fff;height:38px;display:flex;align-items:center;gap:12px;padding:0 14px;font-size:13px}
+.bar .sp{flex:1}
+.bar .env{background:rgba(255,255,255,.12);border-radius:4px;padding:3px 8px;font-size:12px}
+.cmdb{display:flex;gap:4px;align-items:center;background:#fff;border-bottom:1px solid #e1e1e1;padding:5px 10px;flex-wrap:wrap}
+.cmdb span{padding:5px 9px;border-radius:4px;color:#424242}
+.cmdb .primary{background:#0f6cbd;color:#fff}
+.body2{display:grid;grid-template-columns:170px 1fr}
+.lnav{background:#f3f2f1;border-right:1px solid #e1e1e1;padding:8px 0;min-height:260px}
+.lnav div{padding:6px 14px;color:#424242}
+.lnav .on{background:#e5effa;border-left:3px solid #0f6cbd;font-weight:600;color:#242424;padding-left:11px}
+.main{padding:14px 18px;display:flex;flex-direction:column;gap:10px}
+.grid-t{width:100%;border-collapse:collapse;background:#fff;font-size:12.5px}
+.grid-t th,.grid-t td{text-align:left;padding:7px 10px;border-bottom:1px solid #edebe9}
+.grid-t th{color:#616161;font-weight:600}
+.panel{position:absolute;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:1px solid #d1d1d1;box-shadow:-8px 0 24px rgba(0,0,0,.12);padding:16px;display:flex;flex-direction:column;gap:10px}
+.panel h5{margin:0;font-size:16px;font-weight:600}
+.fld{display:flex;flex-direction:column;gap:4px}
+.fld label{font-weight:600;font-size:12.5px}
+.in{border:1px solid #c7c7c7;border-radius:4px;padding:5px 8px;background:#fff;min-height:18px}
+.in.sel{display:flex;justify-content:space-between}
+.in.sel::after{content:"\2304";color:#616161}
+.btns{display:flex;gap:8px;margin-top:auto}
+.btn{border:1px solid #c7c7c7;border-radius:4px;padding:5px 14px;background:#fff}
+.btn.primary{background:#0f6cbd;color:#fff;border-color:#0f6cbd}
+.chk{display:flex;align-items:center;gap:7px}
+.chk i{width:14px;height:14px;border:1.5px solid #616161;border-radius:3px;display:inline-block}
+.chk i.on{background:#0f6cbd;border-color:#0f6cbd;position:relative}
+.chk i.on::after{content:"";position:absolute;left:3.5px;top:0.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.pin{position:absolute;width:22px;height:22px;border-radius:50%;background:#d13438;color:#fff;font:600 12px/22px "IBM Plex Sans",sans-serif;text-align:center;box-shadow:0 0 0 3px rgba(209,52,56,.28);z-index:3}
+.hl{outline:2px solid #d13438;outline-offset:2px;border-radius:4px}
+.dlg{background:#fff;border:1px solid #c8c8c8;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.dlg .t{background:#f3f2f1;border-bottom:1px solid #e1e1e1;padding:8px 12px;font-weight:600;display:flex;justify-content:space-between}
+.tabs2{display:flex;gap:2px;padding:6px 10px 0;border-bottom:1px solid #e1e1e1;background:#fafafa;flex-wrap:wrap}
+.tabs2 span{padding:5px 10px;border:1px solid transparent;border-bottom:none;border-radius:4px 4px 0 0;color:#424242}
+.tabs2 .on{background:#fff;border-color:#e1e1e1;font-weight:600;color:#242424;margin-bottom:-1px}
+.row2{display:grid;grid-template-columns:260px 1fr;gap:10px;align-items:center;padding:6px 14px}
+/* form designer */
+.fd{display:grid;grid-template-columns:200px 1fr 250px;min-height:430px}
+.fd .left{background:#fff;border-right:1px solid #e1e1e1;padding:10px;display:flex;flex-direction:column;gap:6px}
+.fd .canvas{background:#f3f2f1;padding:16px;display:flex;flex-direction:column;gap:10px}
+.fd .right{background:#fff;border-left:1px solid #e1e1e1;padding:12px;display:flex;flex-direction:column;gap:10px}
+.fd .col{padding:5px 8px;border-radius:4px;display:flex;gap:6px;align-items:center}
+.fd .col .ic{font-size:10px;color:#616161;border:1px solid #c7c7c7;border-radius:3px;padding:0 3px}
+.fd .tabsf{display:flex;gap:18px;border-bottom:1px solid #d1d1d1;padding-bottom:4px}
+.fd .tabsf .on{font-weight:600;border-bottom:2px solid #0f6cbd;padding-bottom:4px}
+.sect{background:#fff;border-radius:6px;padding:10px 12px;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.sect h6{margin:0 0 8px;font-size:13px}
+.ffield{border:2px solid #0f6cbd;border-radius:4px;padding:8px;display:flex;gap:12px;align-items:center;background:#f5f9fe}
+.ffield .lbl{color:#616161;width:110px}
+.ffield .val{flex:1;border:1px solid #c7c7c7;border-radius:3px;padding:4px 6px;color:#9e9e9e;background:#fff}
+.dim{color:#616161;font-size:12px}
+.side-head{font-weight:600;font-size:14px;border-bottom:1px solid #edebe9;padding-bottom:6px}
+.acc{border-top:1px solid #edebe9;padding-top:8px;display:flex;flex-direction:column;gap:6px}
+.acc b{font-size:12.5px}
+.link{color:#0f6cbd}
+.complist{display:flex;flex-direction:column;border:1px solid #e1e1e1;border-radius:4px}
+.complist div{padding:7px 10px;border-bottom:1px solid #f0f0f0;display:flex;gap:8px;align-items:center}
+.complist div:last-child{border-bottom:none}
+.complist .chosen{background:#e5effa;font-weight:600}
+.ico{width:18px;height:18px;border-radius:4px;background:#ebf3fc;color:#0f6cbd;display:grid;place-items:center;font-size:11px}
+.cfg{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.cfg .fld label span{font-weight:400;color:#616161}
+.mini{padding:14px;display:flex;flex-direction:column;gap:8px;background:#fff}
+.zone{border:2px dashed #d1d1d1;border-radius:6px;background:#fafafa;min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;padding:10px}
+.zone.off{opacity:.6}
+.zone .up{color:#0f6cbd;font-size:18px;line-height:1}
+.mlist{display:flex;flex-direction:column;gap:6px}
+.mlist div{display:flex;gap:8px;align-items:center}
+.mlist .n{color:#0f6cbd}
+.mlist .m{color:#616161;font-size:11.5px}
+.tl{display:flex;flex-direction:column;gap:8px}
+.tl .item{display:flex;gap:10px;background:#fff;border:1px solid #edebe9;border-radius:6px;padding:8px 10px}
+.tl .av{width:28px;height:28px;border-radius:50%;background:#4f6bed;color:#fff;display:grid;place-items:center;font-size:11px;font-weight:600;flex-shrink:0}
+.tl .att{display:inline-flex;gap:6px;align-items:center;border:1px solid #e1e1e1;border-radius:4px;padding:3px 8px;margin-top:4px;font-size:12px}
+
+table.props{border-collapse:collapse;width:100%;font-size:14px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-radius:8px}
+.props th,.props td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+.props th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.props tr:last-child td{border-bottom:0}
+.props td:first-child{font-weight:500;white-space:nowrap}
+.props td:nth-child(2){white-space:nowrap}
+.math{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.math th,.math td{padding:5px 14px 5px 0;text-align:left;border-bottom:1px solid var(--rule)}
+.math th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.faq{display:flex;flex-direction:column;gap:12px}
+.faq div{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.faq b{font-weight:600}
+.faq span{color:var(--muted)}
+.step{grid-template-columns:44px minmax(0,1fr)}
+code{overflow-wrap:anywhere}
+.pad{background:#fff;border:1px solid #c7c7c7;border-radius:4px;min-height:90px;position:relative;display:flex;align-items:center;justify-content:center;color:#8a8886}
+.pad .base{position:absolute;left:18px;right:18px;bottom:24px;border-bottom:1px solid #c8c6c4;font-size:12px;color:#8a8886}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12px;color:#616161}
+.tools .b{border:1px solid #e1e1e1;border-radius:4px;padding:2px 7px;background:#fff}
+.tools .save{margin-left:auto;background:#0f6cbd;color:#fff;border-color:#0f6cbd;opacity:.55}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">AnkitRanaTech.SignaturePad · version 0.1.0</div>
+  <h1 style="margin-top:6px">Setting up the Signature Pad on a CRM form</h1>
+  <p class="lede">What the control looks like, then every screen you go through to put it on a form: what to click, what to type, and what to leave alone.</p>
+  <p class="lede" style="font-size:14px">For every setting, security and update details see the full <a href="user-guide.md" style="color:var(--accent)">User guide</a> (also as Word and PDF in this folder).</p>
+  <nav class="toc" aria-label="Contents" style="margin-top:16px">
+    <a href="#look">What users see</a><a href="#before">Before you start</a><a href="#s1">1 · Build</a><a href="#s2">2 · Import</a><a href="#s3">3 · Table</a><a href="#s4">4 · Form</a><a href="#s5">5 · Component</a><a href="#s6">6 · Publish & check</a><a href="#props">Properties</a><a href="#help">Problems</a>
+  </nav>
+</header>
+
+<section id="look" aria-labelledby="look-h">
+  <h2 id="look-h">What users will see on the record</h2>
+  <p><span class="tag real">Real screenshot</span>These four are taken from the actual control, version 0.1.0, running in the PCF test harness. In CRM, "Demo User" is replaced by the person who saved the image.</p>
+  <div class="shots">
+    <figure>
+      <img src="img/signature-pad.png" alt="The Signature Pad: a toolbar with pen, eraser, two colours, three sizes, undo, redo, Clear and Save signature, a white pad with a signature on a baseline, and a note box below saying J. Smith, customer." width="922" height="331">
+      <figcaption><b>Signing.</b> Users sign on the white pad with a mouse, pen or finger. The toolbar has the pen and <b>eraser</b>, colours, three thicknesses, <b>undo</b>, <b>redo</b> and <b>Clear</b>. The note box under the pad is for the signer's name or what the picture is. <b>Save signature</b> saves it straight away as a Note on the record.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/signature-saved.png" alt="After saving: a green message 'Signature saved as Signature 2026-10-05 19-06.png', the heading Saved signature with a Sign again button, and a card showing the signature, the note J. Smith, customer, the file name, date, user and size, with edit, download and delete buttons." width="922" height="377">
+      <figcaption><b>After saving (Signature mode).</b> The saved signature replaces the pad, titled with the note. The pencil opens it on the pad again, the arrow downloads the PNG, and the bin deletes it after asking first. <b>Sign again</b> starts a new signature; by default it replaces the old one when saved.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/signature-edit.png" alt="Editing the saved signature: the caption says Editing Signature 2026-10-05 19-06.png, the eraser is selected, and a gap has been rubbed out of the signature. Cancel and Save changes buttons." width="922" height="359">
+      <figcaption><b>Editing a saved image.</b> The saved picture opens on the pad with its note. Here the eraser has rubbed out part of it, ready to draw that part again. <b>Save changes</b> updates the same Note; <b>Cancel</b> asks before throwing the changes away.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/drawing-mode.png" alt="Drawing mode: six colours in the toolbar, a large pad with a green circle and a red arrow, a note 'Garden - crack in the wall', and below three saved drawings titled Kitchen table - 180 x 90 cm, Second floor and First floor, newest first." width="922" height="854">
+      <figcaption><b>Drawing mode.</b> A bigger pad with six colours, and the saved drawings listed under it, <b>newest first</b>. Each card shows the user's note (<i>First floor</i>, <i>Kitchen table</i>…) as its title, with the file name, date and size underneath.</figcaption>
+    </figure>
+  </div>
+  <div class="states">
+    <figure>
+      <div class="scr-wrap"><div class="scr sm" style="min-width:0"><div class="mini">
+        <div style="background:#ebf3fc;border:1px solid #b4d6fa;border-radius:4px;padding:6px 10px">&#x2139; Save the record first, then save the signature.</div>
+        <div class="tools"><span class="b">&#x270E;</span><span class="b">&#x232B;</span><span class="b">&#x21B6;</span><span class="b">Clear</span><span class="b save">Save signature</span></div>
+        <div class="pad">Sign here<span class="base">&#x2715;</span></div>
+      </div></div></div>
+      <figcaption><span class="tag ill">Illustration</span><b>New record, not saved yet.</b> Users can already sign, but Save waits until the record exists. Save the record, then click Save on the pad.</figcaption>
+    </figure>
+    <figure>
+      <div class="scr-wrap"><div class="scr sm" style="min-width:0"><div class="mini">
+        <div style="font-weight:600">Saved signature</div>
+        <div style="border:1px solid #e1e1e1;border-radius:6px;padding:8px;display:flex;flex-direction:column;gap:6px">
+          <div style="height:54px;display:flex;align-items:center;justify-content:center;font:italic 26px 'Segoe Script','Brush Script MT',cursive;color:#1b1b1b">J. Smith</div>
+          <div style="display:flex;align-items:flex-end"><span><b>J. Smith, customer</b><br><span class="m dim">Signature 2026-10-05 19-06.png</span></span><span style="margin-left:auto" class="dim">&#x2913;</span></div>
+        </div>
+      </div></div></div>
+      <figcaption><span class="tag ill">Illustration</span><b>Read-only form</b> (an inactive record, or a user without edit rights): the saved image with Download only. No pad, edit or delete.</figcaption>
+    </figure>
+  </div>
+  <figure>
+    <div class="scr-wrap"><div class="scr" style="min-width:560px"><div class="mini" style="background:#faf9f8">
+      <div style="font-weight:600">Timeline</div>
+      <div class="tl">
+        <div class="item"><span class="av">AW</span><div><b>Note modified by Alex Wilson</b> <span class="dim">· 5/10/2026 7:06 PM</span><div>Signature</div><div class="dim">J. Smith, customer</div><span class="att">&#x1F4CE; Signature 2026-10-05 19-06.png · 37.6 KB</span></div></div>
+        <div class="item"><span class="av">AW</span><div><b>Note modified by Alex Wilson</b> <span class="dim">· 5/10/2026 7:05 PM</span><div>Drawing</div><div class="dim">Second floor</div><span class="att">&#x1F4CE; Drawing 2026-10-05 19-05 (2).png · 34.9 KB</span></div></div>
+      </div>
+    </div></div></div>
+    <figcaption><span class="tag ill">Illustration</span><b>The same images in the record's Timeline.</b> Every save is a normal Note: the title is the image name (or the "Note title" you set), the text is the user's note, and the PNG is attached. Flows and Word templates can pick it up from there. Refresh the Timeline to see new ones.</figcaption>
+  </figure>
+</section>
+
+<section id="before" aria-labelledby="before-h">
+  <h2 id="before-h">Before you start</h2>
+  <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:76ch">
+    <li>You need the <b>System Administrator</b> or <b>System Customizer</b> role in the environment.</li>
+    <li>On your PC: <b>pac CLI</b> (Power Platform CLI, recent version) and the <b>.NET SDK</b> (for <code>dotnet build</code>).</li>
+    <li>Decide which table gets the control and which mode: <b>Signature</b> (e.g. customer sign-off on a Work Order) or <b>Drawing</b> (e.g. damage sketches on an Inspection).</li>
+  </ul>
+  <p class="note"><b>Labels on the illustrations</b> follow the current Power Apps maker portal. Microsoft moves things around now and then, so a button may sit in a slightly different place, but the names stay the same.</p>
+</section>
+
+<section id="s1" class="step" aria-labelledby="s1-h">
+  <div class="num">1</div>
+  <h3 id="s1-h">Build the solution file (once per version)</h3>
+  <p>Open a terminal in the root of this repository (the folder that contains <code>SignaturePad</code>) and run these. They create a solution that holds the control, then build it.</p>
+  <pre class="cmd"><span class="c"># one time only: create the solution project</span>
+mkdir SignaturePadSolution
+cd SignaturePadSolution
+pac solution init --publisher-name AnkitRanaTech --publisher-prefix art
+pac solution add-reference --path ..\SignaturePad
+
+<span class="c"># every release: build it</span>
+dotnet build -c Release
+
+<span class="ok">Build succeeded.</span>
+<span class="c">  -&gt; bin\Release\SignaturePadSolution.zip</span></pre>
+  <p class="dim" style="color:var(--muted)">Use <b>Release</b>; it's minified (about 55 KB) instead of the 6 MB dev build. Want a quick try in a dev environment instead? Run <code>pac auth create --environment https://yourorg.crm.dynamics.com</code> then <code>pac pcf push --publisher-prefix art</code> in the SignaturePad folder, and skip to step 3.</p>
+</section>
+
+<section id="s2" class="step" aria-labelledby="s2-h">
+  <div class="num">2</div>
+  <h3 id="s2-h">Import it into your environment</h3>
+  <div class="scr-wrap"><div class="scr">
+    <div class="addr"><span class="dots"><i></i><i></i><i></i></span><span class="url">make.powerapps.com/environments/…/solutions</span></div>
+    <div class="bar"><span>Power Apps</span><span class="sp"></span><span class="env">Environment: Contoso Dev</span></div>
+    <div class="body2" style="position:relative">
+      <div class="lnav"><div>Home</div><div>Create</div><div>Apps</div><div>Tables</div><div>Flows</div><div class="on">Solutions</div></div>
+      <div class="main">
+        <div class="cmdb" style="border:1px solid #e1e1e1;border-radius:4px"><span>+ New solution</span><span class="hl">&#x2B73; Import solution</span><span>Open AppSource</span></div>
+        <div style="font-size:18px;font-weight:600">Solutions</div>
+        <table class="grid-t"><tr><th>Display name</th><th>Version</th><th>Publisher</th></tr><tr><td>Default Solution</td><td>1.0</td><td>Default Publisher</td></tr><tr><td>Common Data Services Default Solution</td><td>1.0.0.0</td><td>CDS Default Publisher</td></tr></table>
+      </div>
+      <div class="panel">
+        <h5>Import a solution</h5>
+        <div class="dim">Select a solution package to import.</div>
+        <div class="fld"><label>Solution file</label><div style="display:flex;gap:6px"><div class="in" style="flex:1">SignaturePadSolution.zip</div><span class="btn hl">Browse</span></div></div>
+        <div class="dim">After Next: check the details and click <b>Import</b>.</div>
+        <div class="btns"><span class="btn primary hl">Next</span><span class="btn">Cancel</span></div>
+      </div>
+      <span class="pin" style="left:290px;top:8px">1</span>
+      <span class="pin" style="right:8px;top:62px">2</span>
+      <span class="pin" style="right:224px;bottom:30px">3</span>
+    </div>
+  </div></div>
+  <ul class="legend">
+    <li><span class="p">1</span><span>Go to <b>make.powerapps.com</b>, check the environment at the top right, then <b>Solutions → Import solution</b>.</span></li>
+    <li><span class="p">2</span><span><b>Browse</b> and pick <code>bin\Release\SignaturePadSolution.zip</code>.</span></li>
+    <li><span class="p">3</span><span><b>Next</b>, then <b>Import</b>. Wait for "Solution imported successfully" (about a minute).</span></li>
+  </ul>
+</section>
+
+<section id="s3" class="step" aria-labelledby="s3-h">
+  <div class="num">3</div>
+  <h3 id="s3-h">Prepare the table (once per table)</h3>
+  <p><b>3a · Allow notes.</b> Account, Contact, Case, Lead, Opportunity and Work Order already allow them; skip this for those. For your own table, open <b>Tables → your table → Properties → Advanced options</b>:</p>
+  <div class="scr-wrap"><div class="scr sm" style="padding:16px;background:#e9edf2"><div class="dlg" style="position:relative;max-width:440px">
+    <div class="t"><span>Edit table: Inspection</span><span>✕</span></div>
+    <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+      <div class="dim" style="font-weight:600;color:#242424">Advanced options ⌃</div>
+      <div class="dim">Make this table an option when:</div>
+      <div class="chk"><i></i>Creating a new activity</div>
+      <div class="chk"><i></i>Doing a mail merge</div>
+      <div class="chk hl"><i class="on"></i><b>Enable attachments (including notes and files)</b></div>
+      <div class="chk"><i class="on"></i>Track changes</div>
+      <div class="btns" style="margin-top:6px"><span class="btn primary">Save</span><span class="btn">Cancel</span></div>
+    </div>
+    <span class="pin" style="right:10px;top:122px">1</span>
+  </div></div></div>
+  <ul class="legend"><li><span class="p">1</span><span>Tick <b>Enable attachments (including notes and files)</b> → Save. This can't be turned off later.</span></li></ul>
+
+  <p style="margin-top:12px"><b>3b · Add a host column.</b> A code component has to sit on a column. This one needs a text column; the control only writes to it if you switch on "Fill host field when saved". Go to <b>Tables → your table → Columns → + New column</b>:</p>
+  <div class="scr-wrap"><div class="scr" style="height:330px">
+    <div class="body2" style="position:relative;height:100%">
+      <div class="lnav"><div>Overview</div><div class="on">Columns</div><div>Relationships</div><div>Keys</div><div>Forms</div><div>Views</div></div>
+      <div class="main"><div class="cmdb" style="border:1px solid #e1e1e1;border-radius:4px"><span class="hl">+ New column</span><span>Edit</span></div>
+        <table class="grid-t"><tr><th>Display name</th><th>Data type</th></tr><tr><td>Name</td><td>Single line of text</td></tr><tr><td>Inspection date</td><td>Date only</td></tr></table></div>
+      <div class="panel">
+        <h5>New column</h5>
+        <div class="fld"><label>Display name *</label><div class="in hl">Signature</div></div>
+        <div class="fld"><label>Description</label><div class="in" style="color:#9e9e9e">Hosts the Signature Pad control</div></div>
+        <div class="fld"><label>Data type *</label><div class="in sel hl">Single line of text</div></div>
+        <div class="fld"><label>Required</label><div class="in sel">Optional</div></div>
+        <div class="btns"><span class="btn primary hl">Save</span><span class="btn">Cancel</span></div>
+      </div>
+      <span class="pin" style="left:196px;top:12px">1</span>
+      <span class="pin" style="right:20px;top:44px">2</span>
+      <span class="pin" style="right:20px;top:160px">3</span>
+      <span class="pin" style="right:226px;bottom:14px">4</span>
+    </div>
+  </div></div>
+  <ul class="legend">
+    <li><span class="p">1</span><span><b>+ New column</b>.</span></li>
+    <li><span class="p">2</span><span>Display name: type <span class="type">Signature</span> (any name is fine; it gets your environment's publisher prefix, e.g. <code>new_signature</code>). For a drawing pad, something like <span class="type">Sketches</span>.</span></li>
+    <li><span class="p">3</span><span>Data type: <b>Single line of text</b>. This matters: the control only appears for text columns.</span></li>
+    <li><span class="p">4</span><span><b>Save</b>. Leave Required as <b>Optional</b> for now; see "Make signing required" below the property table.</span></li>
+  </ul>
+</section>
+
+<section id="s4" class="step" aria-labelledby="s4-h">
+  <div class="num">4</div>
+  <h3 id="s4-h">Put the column on the form</h3>
+  <p>Go to <b>Tables → your table → Forms</b> and open the form of type <b>Main</b>. The form designer opens:</p>
+  <div class="scr-wrap"><div class="scr" style="min-width:860px">
+    <div class="cmdb" style="justify-content:space-between"><span style="display:flex;gap:4px"><span>← Back</span><span>Undo</span><span>Redo</span><span>+ Component</span><span>Form settings</span></span><span style="display:flex;gap:4px"><span>Save</span><span class="primary hl">Save and publish</span></span></div>
+    <div class="fd" style="position:relative">
+      <div class="left">
+        <div class="side-head">Table columns</div>
+        <div class="in" style="color:#9e9e9e">Search</div>
+        <div class="col"><span class="ic">Abc</span>Name</div>
+        <div class="col"><span class="ic">&#x1F4C5;</span>Inspection date</div>
+        <div class="col hl" style="background:#e5effa"><span class="ic">Abc</span><b>Signature</b></div>
+        <div class="col"><span class="ic">Abc</span>Inspector</div>
+        <div class="col"><span class="ic">#</span>Score</div>
+        <div class="dim" style="margin-top:auto">Tip: tick "Show only unused columns".</div>
+      </div>
+      <div class="canvas">
+        <div class="tabsf"><span>General</span><span>Details</span><span class="on">Sign-off</span><span class="link">+ Add tab</span></div>
+        <div class="sect"><h6>Customer signature <span class="dim">(1-column section)</span></h6>
+          <div class="ffield"><span class="lbl">Signature</span><span class="val">---</span></div>
+          <div class="dim" style="margin-top:8px">After step 5 this field shows the signing pad instead of a text box.</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="side-head">Signature <span class="dim">· Column</span></div>
+        <div class="fld"><label>Label</label><div class="in">Signature</div></div>
+        <div class="chk hl"><i></i>Show label</div>
+        <div class="chk"><i></i>Hide</div>
+        <div class="acc"><b>Components ⌃</b><span class="link hl" style="padding:3px 0">+ Component</span><span class="dim">Use a code component to show this column.</span></div>
+      </div>
+      <span class="pin" style="left:178px;top:112px">1</span>
+      <span class="pin" style="left:470px;top:2px">2</span>
+      <span class="pin" style="left:648px;top:102px">3</span>
+      <span class="pin" style="right:16px;top:200px">4</span>
+      <span class="pin" style="right:16px;top:110px">5</span>
+    </div>
+  </div></div>
+  <ul class="legend">
+    <li><span class="p">1</span><span>In <b>Table columns</b> on the left, find <b>Signature</b>.</span></li>
+    <li><span class="p">2</span><span>Optional but tidy: add a tab called <span class="type">Sign-off</span> with a <b>1-column</b> section called <span class="type">Customer signature</span>, so the pad gets the full width.</span></li>
+    <li><span class="p">3</span><span>Drag <b>Signature</b> into that section, then click it so its properties open on the right.</span></li>
+    <li><span class="p">4</span><span>Under <b>Components</b>, click <b>+ Component</b>. This opens step 5.</span></li>
+    <li><span class="p">5</span><span>After step 5, come back here and <b>untick "Show label"</b>, so users see only the pad.</span></li>
+  </ul>
+</section>
+
+<section id="s5" class="step" aria-labelledby="s5-h">
+  <div class="num">5</div>
+  <h3 id="s5-h">Choose the control and set it up</h3>
+  <div class="scr-wrap"><div class="scr" style="padding:18px;background:#e9edf2;min-width:860px">
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:16px;position:relative">
+      <div class="dlg" style="align-self:start"><div class="t"><span>Add component</span><span>✕</span></div>
+        <div style="padding:10px;display:flex;flex-direction:column;gap:8px">
+          <div class="in" style="color:#9e9e9e">Search components</div>
+          <div class="complist">
+            <div><span class="ico">★</span>Star rating</div>
+            <div><span class="ico">⇆</span>Toggle</div>
+            <div class="chosen hl"><span class="ico">&#x270D;</span>Signature Pad (AnkitRana-Tech)</div>
+            <div><span class="ico">≡</span>Rich text editor control</div>
+          </div>
+          <span class="link">Get more components</span>
+        </div>
+      </div>
+      <div class="dlg"><div class="t"><span>Signature Pad (AnkitRana-Tech)</span><span>✕</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+          <div class="cfg">
+            <div class="fld"><label>Host field</label><div class="in">Signature <span class="dim">(bound)</span></div></div>
+            <div class="fld"><label>Mode</label><div class="in sel hl">Signature</div></div>
+            <div class="fld"><label>Image name <span>(optional)</span></label><div class="in" style="color:#9e9e9e">empty = Signature / Drawing</div></div>
+            <div class="fld"><label>Add date to file name</label><div class="in sel">Yes</div></div>
+            <div class="fld"><label>When a new image is saved</label><div class="in sel">Replace the earlier image</div></div>
+            <div class="fld"><label>Note title <span>(optional)</span></label><div class="in" style="color:#9e9e9e">empty = image name</div></div>
+            <div class="fld"><label>Note with each image</label><div class="in sel">Optional</div></div>
+            <div class="fld"><label>Pen colour <span>(optional)</span></label><div class="in" style="color:#9e9e9e">empty = black</div></div>
+            <div class="fld"><label>Pen width (px) <span>(optional)</span></label><div class="in" style="color:#9e9e9e">empty = 3</div></div>
+            <div class="fld"><label>Pad height (px) <span>(optional)</span></label><div class="in" style="color:#9e9e9e">empty = 200 / 360</div></div>
+            <div class="fld"><label>Image background</label><div class="in sel">White</div></div>
+            <div class="fld"><label>Allow delete</label><div class="in sel">Yes</div></div>
+            <div class="fld"><label>Fill host field when saved</label><div class="in sel">No</div></div>
+          </div>
+          <div style="display:flex;gap:18px;align-items:center;border-top:1px solid #eee;padding-top:10px" class="hl"><span class="chk"><i class="on"></i>Web</span><span class="chk"><i class="on"></i>Mobile</span><span class="chk"><i class="on"></i>Tablet</span></div>
+          <div style="display:flex;justify-content:flex-end;gap:8px"><span class="btn primary hl">Done</span><span class="btn">Cancel</span></div>
+        </div>
+      </div>
+      <span class="pin" style="left:252px;top:136px">1</span>
+      <span class="pin" style="right:-8px;top:76px">2</span>
+      <span class="pin" style="right:-8px;bottom:58px">3</span>
+      <span class="pin" style="right:70px;bottom:-6px">4</span>
+    </div>
+  </div></div>
+  <ul class="legend">
+    <li><span class="p">1</span><span>Pick <b>Signature Pad (AnkitRana-Tech)</b>. Not in the list? Click <b>Get more components</b>, find it under "Build by others" (or search "Signature"), tick it and <b>Add</b>.</span></li>
+    <li><span class="p">2</span><span>Choose the <b>Mode</b>: <b>Signature</b> or <b>Drawing</b>. For a first try, leave everything else as it is. See <a href="#props" style="color:var(--accent)">the property table</a> for when to change them.</span></li>
+    <li><span class="p">3</span><span>Tick <b>Web</b>, <b>Mobile</b> and <b>Tablet</b>, so it shows on phones and tablets too, where signing with a finger is most natural.</span></li>
+    <li><span class="p">4</span><span><b>Done</b>. Then do step 4's point 5 (untick "Show label").</span></li>
+  </ul>
+  <p class="note"><b>Two pads on one form?</b> Add the control to two different text columns and give each a different <b>Image name</b>, for example <span class="type">Customer signature</span> and <span class="type">Engineer signature</span>. Each pad only shows, replaces and deletes its own images.</p>
+</section>
+
+<section id="s6" class="step" aria-labelledby="s6-h">
+  <div class="num">6</div>
+  <h3 id="s6-h">Save, publish and check it</h3>
+  <ol>
+    <li>Click <b>Save and publish</b> (top right of the form designer). Wait for "Published".</li>
+    <li>Open your app, then an <b>existing</b> record of that table, and go to the tab with the pad. Press <b>Ctrl+F5</b> once so the browser picks up the new control. You should see the pad like the first screenshot above.</li>
+    <li>Sign, type a note, and click <b>Save signature</b>. The saved signature should replace the pad, and a Note with the PNG should appear in the Timeline (after refreshing it).</li>
+    <li>Click the pencil, rub out part of it with the eraser, draw it again and <b>Save changes</b>. The card should update.</li>
+    <li>Open <b>+ New</b> for that table. You should see "Save the record first, then save the signature."</li>
+    <li>Optional: try it on a phone or tablet in the Power Apps app, and sign with a finger.</li>
+  </ol>
+</section>
+
+<section id="props" aria-labelledby="props-h">
+  <h2 id="props-h">The properties, and when to change them</h2>
+  <div class="tbl"><table class="props">
+    <thead><tr><th>Property</th><th>Leave as</th><th>What it does / when to change it</th></tr></thead>
+    <tbody>
+      <tr><td>Host field</td><td>(set for you)</td><td>The text column from step 3b. Only written to when "Fill host field when saved" is Yes.</td></tr>
+      <tr><td>Mode</td><td>Signature</td><td><b>Signature</b>: cropped to the ink; once saved, the signature is shown instead of the pad. <b>Drawing</b>: a bigger pad with six colours, saved drawings listed under it (newest first).</td></tr>
+      <tr><td>Image name</td><td>empty</td><td>File name without <code>.png</code>. Empty = <code>Signature</code> or <code>Drawing</code>. Set it when you have two pads on one form, or want e.g. <code>Customer signature</code>.</td></tr>
+      <tr><td>Add date to file name</td><td>Yes</td><td>Yes: <code>Signature 2026-10-05 14-30.png</code>. No: <code>Signature.png</code>.</td></tr>
+      <tr><td>When a new image is saved</td><td>Replace</td><td>Replace keeps one image per record (the earlier one is deleted after the new one is saved). Choose <b>Keep</b> for drawings, so every sketch stays.</td></tr>
+      <tr><td>Note title</td><td>empty</td><td>The title of the Note in the Timeline. Empty = the image name.</td></tr>
+      <tr><td>Note with each image</td><td>Optional</td><td>The small text box under the pad, for <i>First floor</i>, <i>Kitchen table</i> or the signer's name. <b>Required</b> makes users fill it before saving; <b>Off</b> hides it. Saved as the Note's text and shown as the image's title.</td></tr>
+      <tr><td>Pen colour</td><td>empty</td><td>Starting colour, e.g. <code>#1F3B8C</code> for a dark blue "ink" signature. Empty = black.</td></tr>
+      <tr><td>Pen width (px)</td><td>empty</td><td>Starting thickness, 1 to 20. Empty = 3.</td></tr>
+      <tr><td>Pad height (px)</td><td>empty</td><td>Empty = 200 for signatures, 360 for drawings. The width always follows the form.</td></tr>
+      <tr><td>Image background</td><td>White</td><td>Transparent suits signatures placed on top of documents.</td></tr>
+      <tr><td>Allow delete</td><td>Yes</td><td>No = no delete button. Users' security roles still apply either way.</td></tr>
+      <tr><td>Fill host field when saved</td><td>No</td><td>Yes = the newest file name is written into the host column (cleared when the last image is deleted). Users then save the form. Use it to check for a signature in rules, views or flows.</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Make signing required:</b> set "Fill host field when saved" to <b>Yes</b>, then use a business rule (or make the host column required) so the record can't move on until the column has a value. A new record has to be saved once before it can be signed, so apply the rule after creation, for example on a status change.</p>
+  <p><b>What users need:</b> permission to <b>create notes</b> and <b>append</b> them to the record, the same as attaching a file in the Timeline; <b>write</b> on notes to edit a saved image, and <b>delete</b> on notes to delete or replace one. Standard roles like Salesperson and Field Service - Resource already have this.</p>
+  <p class="note"><b>Not a certified e-signature.</b> The control saves a picture of the signature plus who saved it and when. It doesn't verify identity or seal a document. For contracts that need that, use a dedicated e-signature service.</p>
+</section>
+
+<section id="help" aria-labelledby="help-h">
+  <h2 id="help-h">If something isn't right</h2>
+  <div class="faq">
+    <div><b>The control isn't in the + Component list.</b><span>Use <b>Get more components</b> in that panel. If it's not there either, the import in step 2 didn't finish, or you're in a different environment.</span></div>
+    <div><b>I still see a text box, not the pad.</b><span>The form wasn't published, or the browser has the old form. Click <b>Save and publish</b>, then press Ctrl+F5 on the record. Also check that Web is ticked in step 5.</span></div>
+    <div><b>"Save the record first, then save the signature."</b><span>Normal on a new record. Save it once, then click Save on the pad; the signature already drawn stays on the pad.</span></div>
+    <div><b>Saving fails with a message about <code>objectid_…</code></b><span>Notes aren't enabled on the table. Do step 3a.</span></div>
+    <div><b>Saving fails with a permission message.</b><span>The user's security role can't create notes or append to this record. Fix it in their role.</span></div>
+    <div><b>A signature saved earlier doesn't show.</b><span>The control only shows images whose file name matches its "Image name" (plus the date). If the setting was changed, or the file renamed, the old image is still in the Timeline but not on the pad.</span></div>
+    <div><b>The page scrolls instead of drawing on a phone.</b><span>Start the stroke inside the white area; the pad only stops scrolling there.</span></div>
+    <div><b>The form says it has unsaved changes after signing.</b><span>"Fill host field when saved" is Yes, so the host column changed. Save the form.</span></div>
+  </div>
+  <h3 style="margin-top:8px">Installing a newer version later</h3>
+  <p>Raise the version in <code>ControlManifest.Input.xml</code> (it's 0.1.0 now), run <code>dotnet build -c Release</code> again, and import the new zip as in step 2. The forms that use the control pick it up on their own, and saved images stay where they are.</p>
+</section>
+
+</div>
+
+</body></html>

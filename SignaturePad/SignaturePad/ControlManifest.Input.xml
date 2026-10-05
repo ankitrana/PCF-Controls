@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="AnkitRanaTech" constructor="SignaturePad" version="0.1.0"
+           display-name-key="Signature Pad (AnkitRana-Tech)"
+           description-key="Sign or draw with mouse, pen or touch. Saves the picture as a PNG Note attachment on the current record. Includes eraser, undo, redo and clear, and lets users edit or delete saved images."
+           control-type="virtual">
+    <external-service-usage enabled="false">
+    </external-service-usage>
+
+    <!-- Host field. Only written when "Fill host field when saved" is Yes. -->
+    <property name="hostField" display-name-key="Host field"
+              description-key="Any single line text column. Its value is not changed unless 'Fill host field when saved' is Yes."
+              of-type="SingleLine.Text" usage="bound" required="true" />
+
+    <property name="padMode" display-name-key="Mode"
+              description-key="Signature: one signature per record, cropped to the ink. Drawing: a larger canvas with more colours, and a list of saved drawings."
+              of-type="Enum" usage="input" required="false" default-value="signature">
+      <value name="signature" display-name-key="Signature">signature</value>
+      <value name="drawing" display-name-key="Drawing">drawing</value>
+    </property>
+
+    <property name="imageName" display-name-key="Image name"
+              description-key="File name of the saved picture, without .png. Leave empty to use 'Signature' or 'Drawing'."
+              of-type="SingleLine.Text" usage="input" required="false" />
+
+    <property name="addDateToName" display-name-key="Add date to file name"
+              description-key="Yes: 'Signature 2026-10-05 14-30.png'. No: 'Signature.png'."
+              of-type="Enum" usage="input" required="false" default-value="yes">
+      <value name="yes" display-name-key="Yes">yes</value>
+      <value name="no" display-name-key="No">no</value>
+    </property>
+
+    <property name="saveBehaviour" display-name-key="When a new image is saved"
+              description-key="Replace: delete the earlier images with the same name, so the record keeps one. Keep: keep every saved image."
+              of-type="Enum" usage="input" required="false" default-value="replace">
+      <value name="replace" display-name-key="Replace the earlier image">replace</value>
+      <value name="keep" display-name-key="Keep earlier images">keep</value>
+    </property>
+
+    <property name="noteSubject" display-name-key="Note title"
+              description-key="Title given to the Note. Leave empty to use the image name."
+              of-type="SingleLine.Text" usage="input" required="false" />
+
+    <property name="imageNote" display-name-key="Note with each image"
+              description-key="Let users type a short note with each image, for example 'First floor' or the signer's name. Saved in the Note's description and shown with the image."
+              of-type="Enum" usage="input" required="false" default-value="optional">
+      <value name="optional" display-name-key="Optional">optional</value>
+      <value name="required" display-name-key="Required">required</value>
+      <value name="off" display-name-key="Off">off</value>
+    </property>
+
+    <property name="penColor" display-name-key="Pen colour"
+              description-key="Starting pen colour as a hex code, for example #000000 or #1F3B8C. Leave empty for black."
+              of-type="SingleLine.Text" usage="input" required="false" />
+
+    <property name="penWidth" display-name-key="Pen width (px)"
+              description-key="Starting pen thickness, 1 to 20. Leave empty for 3."
+              of-type="Whole.None" usage="input" required="false" />
+
+    <property name="padHeight" display-name-key="Pad height (px)"
+              description-key="Height of the drawing area. Leave empty for 200 (signature) or 360 (drawing). The width follows the form."
+              of-type="Whole.None" usage="input" required="false" />
+
+    <property name="background" display-name-key="Image background"
+              description-key="Background of the saved PNG."
+              of-type="Enum" usage="input" required="false" default-value="white">
+      <value name="white" display-name-key="White">white</value>
+      <value name="transparent" display-name-key="Transparent">transparent</value>
+    </property>
+
+    <property name="allowDelete" display-name-key="Allow delete"
+              description-key="Show a delete button on saved images. Dataverse security still applies."
+              of-type="Enum" usage="input" required="false" default-value="yes">
+      <value name="yes" display-name-key="Yes">yes</value>
+      <value name="no" display-name-key="No">no</value>
+    </property>
+
+    <property name="fillHostField" display-name-key="Fill host field when saved"
+              description-key="Yes: write the saved file name into the host field (and clear it when the last image is deleted), so the field can be made required or used in views and rules. The form must then be saved."
+              of-type="Enum" usage="input" required="false" default-value="no">
+      <value name="no" display-name-key="No">no</value>
+      <value name="yes" display-name-key="Yes">yes</value>
+    </property>
+
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.68.0" />
+    </resources>
+
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>
