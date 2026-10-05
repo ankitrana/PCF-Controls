@@ -8,6 +8,8 @@ Drag-and-drop file upload for Dynamics 365 / Dataverse model-driven forms. Files
 
 📘 **[User guide](docs/user-guide.md)**: install, add to a form, every setting explained, security and troubleshooting. Also as [Word](docs/FileDropZone-User-Guide.docx) and [PDF](docs/FileDropZone-User-Guide.pdf).
 
+🧭 **[Setup walkthrough](docs/setup-walkthrough.html)**: every screen you go through to put the control on a form (build, import, file settings, table, form, component, publish), with numbered pins on each screen. It is a web page: download it (Download raw file) together with the `docs/img` folder, or open it from a clone, in any browser.
+
 ## Features
 
 - **Drop, browse or paste**: drop files or whole folders, pick them with the file dialog, or paste screenshots with Ctrl+V.

@@ -17,7 +17,7 @@
 
 | Control | What it does | Docs | Status |
 |---|---|---|---|
-| [**File Drop Zone**](FileDropZone/) | Drag and drop (or paste) files onto a form to save them as Note attachments on the record. Large files upload in blocks with progress and cancel; follows the environment's file size and blocked-type rules; handles duplicates; lists, previews, downloads and deletes existing attachments. | [User guide](FileDropZone/docs/user-guide.md) · [Word](FileDropZone/docs/FileDropZone-User-Guide.docx) · [PDF](FileDropZone/docs/FileDropZone-User-Guide.pdf) | [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml) |
+| [**File Drop Zone**](FileDropZone/) | Drag and drop (or paste) files onto a form to save them as Note attachments on the record. Large files upload in blocks with progress and cancel; follows the environment's file size and blocked-type rules; handles duplicates; lists, previews, downloads and deletes existing attachments. | [User guide](FileDropZone/docs/user-guide.md) · [Word](FileDropZone/docs/FileDropZone-User-Guide.docx) · [PDF](FileDropZone/docs/FileDropZone-User-Guide.pdf) · [Setup walkthrough](FileDropZone/docs/setup-walkthrough.html) | [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml) |
 
 <p align="center">
   <img src="FileDropZone/docs/img/control-uploading.png" width="720" alt="File Drop Zone uploading files" />
