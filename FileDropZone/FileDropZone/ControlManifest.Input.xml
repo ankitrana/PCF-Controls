@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="AnkitRanaTech" constructor="FileDropZone" version="0.2.0"
+           display-name-key="File Drop Zone (AnkitRana-Tech)"
+           description-key="Drag and drop files to upload them as Note attachments on the current record. Lists, downloads and deletes existing attachments."
+           control-type="virtual">
+    <external-service-usage enabled="false">
+    </external-service-usage>
+
+    <!-- Host field. The control does not change its value; any single line text column can be used. -->
+    <property name="hostField" display-name-key="Host field"
+              description-key="Any single line text column. The control is placed on it but never changes its value."
+              of-type="SingleLine.Text" usage="bound" required="true" />
+
+    <property name="allowedExtensions" display-name-key="Allowed file types"
+              description-key="Optional. Comma separated extensions, for example .pdf,.docx,.png. Leave empty to allow every type the environment allows."
+              of-type="SingleLine.Text" usage="input" required="false" />
+
+    <property name="maxFileSizeMB" display-name-key="Max file size (MB)"
+              description-key="Optional. Leave empty to allow whatever the environment allows (System Settings > Email > Maximum file size). Set it only to make the limit lower for this form."
+              of-type="Whole.None" usage="input" required="false" />
+
+    <property name="maxFilesPerDrop" display-name-key="Max files per drop"
+              description-key="How many files can be added in one go."
+              of-type="Whole.None" usage="input" required="false" default-value="10" />
+
+    <property name="noteSubject" display-name-key="Note title"
+              description-key="Title given to each Note. Leave empty to use the file name."
+              of-type="SingleLine.Text" usage="input" required="false" />
+
+    <property name="showExistingFiles" display-name-key="Show existing attachments"
+              description-key="List the attachments already on the record, with download."
+              of-type="Enum" usage="input" required="false" default-value="yes">
+      <value name="yes" display-name-key="Yes">yes</value>
+      <value name="no" display-name-key="No">no</value>
+    </property>
+
+    <property name="allowDelete" display-name-key="Allow delete"
+              description-key="Show a delete button on existing attachments. Dataverse security still applies."
+              of-type="Enum" usage="input" required="false" default-value="yes">
+      <value name="yes" display-name-key="Yes">yes</value>
+      <value name="no" display-name-key="No">no</value>
+    </property>
+
+    <property name="showThumbnails" display-name-key="Show image thumbnails"
+              description-key="Show a small picture for image attachments. Each image is downloaded once to draw it."
+              of-type="Enum" usage="input" required="false" default-value="yes">
+      <value name="yes" display-name-key="Yes">yes</value>
+      <value name="no" display-name-key="No">no</value>
+    </property>
+
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.68.0" />
+    </resources>
+
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>

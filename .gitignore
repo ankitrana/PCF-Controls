@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# PCF build output
+out/
+**/generated/
+bin/
+obj/
+*.binlog
+
+# Solution packages
+*.zip
+
+# Local tooling / scratch
+.playwright-mcp/
+.vs/
+.vscode/
+.idea/
+*.user

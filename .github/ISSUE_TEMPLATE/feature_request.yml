@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest an idea or improvement
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: control
+    attributes:
+      label: Which control?
+      options:
+        - File Drop Zone
+        - Idea for a new control
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the business scenario or what users struggle with today.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: How would you like the control to help?
+    validations:
+      required: true

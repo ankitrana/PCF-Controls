@@ -1,0 +1,42 @@
+name: File Drop Zone
+
+# Builds only when this control (or this workflow) changes
+on:
+  push:
+    branches: [main]
+    paths:
+      - "FileDropZone/**"
+      - ".github/workflows/file-drop-zone.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "FileDropZone/**"
+      - ".github/workflows/file-drop-zone.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: FileDropZone
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: FileDropZone/package-lock.json
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Build (production)
+        run: npm run build -- --buildMode production
+
+      - name: Upload control bundle
+        uses: actions/upload-artifact@v5
+        with:
+          name: FileDropZone
+          path: FileDropZone/out/controls/FileDropZone/

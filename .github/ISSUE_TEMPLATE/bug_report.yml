@@ -1,0 +1,46 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem. Please do not include confidential data (org URLs, customer names, record data, screenshots of real records).
+  - type: dropdown
+    id: control
+    attributes:
+      label: Which control?
+      options:
+        - File Drop Zone
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Control version
+      description: Shown in the solution / control list (Settings > Customizations), or the version you imported.
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: client
+    attributes:
+      label: Where does it happen?
+      multiple: true
+      options:
+        - Model-driven app in a browser (Edge / Chrome)
+        - Model-driven app in another browser
+        - Power Apps mobile app
+        - PCF test harness (npm start)
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Steps to reproduce, what you expected, and what you saw instead.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Error message / details
+      description: Paste the error text shown by the control, or browser console errors (F12 > Console).
