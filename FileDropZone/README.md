@@ -6,7 +6,7 @@ Drag-and-drop file upload for Dynamics 365 / Dataverse model-driven forms. Files
 
 <img src="docs/img/control-uploading.png" width="720" alt="Uploading files: blocked type, duplicate prompt, large file progress, done" />
 
-📘 **[User guide](docs/user-guide.md)**: install, add to a form, every setting explained, security and troubleshooting.
+📘 **[User guide](docs/user-guide.md)**: install, add to a form, every setting explained, security and troubleshooting. Also as [Word](docs/FileDropZone-User-Guide.docx) and [PDF](docs/FileDropZone-User-Guide.pdf).
 
 ## Features
 
