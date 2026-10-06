@@ -162,7 +162,7 @@ const body = [
 
   h1("3. Install the solution", false),
   ...numbered([
-    "Download the latest **managed** solution, for example `ArtSignaturePad_managed.zip`.",
+    "Download `ArtSignaturePad_managed.zip` from the latest **Signature Pad** release on github.com/ankitrana/PCF-Controls/releases (under *Assets*).",
     "Go to make.powerapps.com and pick the environment. Install in a sandbox or development environment first.",
     "Select **Solutions** > **Import solution** > **Browse**, select the zip, then **Next** > **Import**.",
     "Wait for the \"Solution imported successfully\" message.",

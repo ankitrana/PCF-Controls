@@ -44,6 +44,10 @@ Add the control to **any single line text column** on the form.
 | Allow delete | Yes | Show the delete button (security roles still apply). |
 | Fill host field when saved | No | Write the newest file name into the host column (the form then needs saving). |
 
+## Install
+
+Download **`ArtSignaturePad_managed.zip`** from the latest `SignaturePad-v*` release on the [Releases page](https://github.com/ankitrana/PCF-Controls/releases), then in [make.powerapps.com](https://make.powerapps.com) go to **Solutions** > **Import solution** and import it. The [user guide](docs/user-guide.md) has the full steps.
+
 ## Build
 
 Requirements: Node.js 18+ and the [Power Platform CLI](https://learn.microsoft.com/power-platform/developer/cli/introduction).
@@ -68,14 +72,17 @@ pac auth create --environment https://yourorg.crm.dynamics.com
 pac pcf push --publisher-prefix <yourprefix>
 ```
 
-Or package it in a solution:
+Or build the managed solution yourself (publisher AnkitRanaTech, prefix `art`). The [.NET SDK](https://dotnet.microsoft.com/download) is also needed:
 
 ```bash
-mkdir Solution && cd Solution
-pac solution init --publisher-name <PublisherName> --publisher-prefix <prefix>
-pac solution add-reference --path ..
-dotnet build -c Release
+dotnet build Solution/SignaturePadSolution.cdsproj -c Release
 ```
+
+This writes the managed solution to `Solution/bin/Release/SignaturePadSolution.zip`.
+
+### Releasing (maintainer)
+
+Bump the version in `ControlManifest.Input.xml`, `package.json` and `CHANGELOG.md`, commit, then push a tag `SignaturePad-v<version>`. CI checks that the tag matches the manifest, builds the managed solution and publishes a GitHub release with `ArtSignaturePad_managed.zip` attached.
 
 Then in the form designer: select a single line text column > **Components** > **+ Component** > **Signature Pad (AnkitRana-Tech)**, set the options, save and publish.
 

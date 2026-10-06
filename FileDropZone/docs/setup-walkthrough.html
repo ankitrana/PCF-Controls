@@ -230,7 +230,7 @@ table.props{border-collapse:collapse;width:100%;font-size:14px}
   <h2 id="before-h">Before you start</h2>
   <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:76ch">
     <li>You need the <b>System Administrator</b> or <b>System Customizer</b> role in the environment.</li>
-    <li>On your PC: <b>pac CLI</b> (Power Platform CLI, recent version) and the <b>.NET SDK</b> (for <code>dotnet build</code>).</li>
+    <li>Only if you build the solution yourself: <b>pac CLI</b> (Power Platform CLI, recent version), <b>Node.js</b> and the <b>.NET SDK</b> (for <code>dotnet build</code>).</li>
     <li>Decide which table gets the control, for example <b>Account</b>, <b>Case</b>, or one of your own.</li>
   </ul>
   <p class="note"><b>Labels on the illustrations</b> follow the current Power Apps maker portal. Microsoft moves things around now and then, so a button may sit in a slightly different place, but the names stay the same.</p>
@@ -238,20 +238,15 @@ table.props{border-collapse:collapse;width:100%;font-size:14px}
 
 <section id="s1" class="step" aria-labelledby="s1-h">
   <div class="num">1</div>
-  <h3 id="s1-h">Build the solution file (once per version)</h3>
-  <p>Open a terminal in the root of this repository (the folder that contains <code>FileDropZone</code>) and run these. They create a solution that holds the control, then build it.</p>
-  <pre class="cmd"><span class="c"># one time only: create the solution project</span>
-mkdir FileDropZoneSolution
-cd FileDropZoneSolution
-pac solution init --publisher-name AnkitRanaTech --publisher-prefix art
-pac solution add-reference --path ..\FileDropZone
-
-<span class="c"># every release: build it</span>
-dotnet build -c Release
+  <h3 id="s1-h">Get the solution file</h3>
+  <p>Open the <a href="https://github.com/ankitrana/PCF-Controls/releases">Releases page</a>, pick the latest <b>File Drop Zone</b> release and download <code>ArtFileDropZone_managed.zip</code> under <i>Assets</i>. That's the file you import in step 2.</p>
+  <p>Prefer to build it yourself? You need the <b>pac CLI</b> and the <b>.NET SDK</b>. In the <code>FileDropZone</code> folder of this repository run:</p>
+  <pre class="cmd">npm ci
+dotnet build Solution\FileDropZoneSolution.cdsproj -c Release
 
 <span class="ok">Build succeeded.</span>
-<span class="c">  -&gt; bin\Release\FileDropZoneSolution.zip</span></pre>
-  <p class="dim" style="color:var(--muted)">Use <b>Release</b>; it's minified and much smaller than the dev build. Want a quick try in a dev environment instead? Run <code>pac auth create --environment https://yourorg.crm.dynamics.com</code> then <code>pac pcf push --publisher-prefix art</code> in the FileDropZone folder, and skip to step 3.</p>
+<span class="c">  -&gt; Solution\bin\Release\FileDropZoneSolution.zip (managed)</span></pre>
+  <p class="dim" style="color:var(--muted)">Want a quick try in a dev environment instead? Run <code>pac auth create --environment https://yourorg.crm.dynamics.com</code> then <code>pac pcf push --publisher-prefix art</code> in the FileDropZone folder, and skip to step 3.</p>
 </section>
 
 <section id="s2" class="step" aria-labelledby="s2-h">
@@ -270,7 +265,7 @@ dotnet build -c Release
       <div class="panel">
         <h5>Import a solution</h5>
         <div class="dim">Select a solution package to import.</div>
-        <div class="fld"><label>Solution file</label><div style="display:flex;gap:6px"><div class="in" style="flex:1">FileDropZoneSolution.zip</div><span class="btn hl">Browse</span></div></div>
+        <div class="fld"><label>Solution file</label><div style="display:flex;gap:6px"><div class="in" style="flex:1">ArtFileDropZone_managed.zip</div><span class="btn hl">Browse</span></div></div>
         <div class="dim">After Next: check the details and click <b>Import</b>.</div>
         <div class="btns"><span class="btn primary hl">Next</span><span class="btn">Cancel</span></div>
       </div>
@@ -281,7 +276,7 @@ dotnet build -c Release
   </div></div>
   <ul class="legend">
     <li><span class="p">1</span><span>Go to <b>make.powerapps.com</b>, check the environment at the top right, then <b>Solutions → Import solution</b>.</span></li>
-    <li><span class="p">2</span><span><b>Browse</b> and pick <code>bin\Release\FileDropZoneSolution.zip</code>.</span></li>
+    <li><span class="p">2</span><span><b>Browse</b> and pick <code>ArtFileDropZone_managed.zip</code> (or your own build's <code>FileDropZoneSolution.zip</code>).</span></li>
     <li><span class="p">3</span><span><b>Next</b>, then <b>Import</b>. Wait for "Solution imported successfully" (about a minute).</span></li>
   </ul>
 </section>
@@ -507,7 +502,7 @@ dotnet build -c Release
     <div><b>New files don't show in the Timeline.</b><span>The Timeline doesn't know about the upload. Click its refresh button.</span></div>
   </div>
   <h3 style="margin-top:8px">Installing a newer version later</h3>
-  <p>Raise the version in <code>ControlManifest.Input.xml</code> (it's 0.2.0 now), run <code>dotnet build -c Release</code> again, and import the new zip as in step 2. The forms that use the control pick it up on their own. If you set up 0.1.0 earlier, open that form once and clear the old "Max file size" of 5, so the environment's limit applies.</p>
+  <p>Download the newer <code>ArtFileDropZone_managed.zip</code> from the Releases page (or, for your own build, raise the version in <code>ControlManifest.Input.xml</code> and build again) and import it as in step 2; Power Apps offers an <b>Upgrade</b>. The forms that use the control pick it up on their own. If you set up 0.1.0 earlier, open that form once and clear the old "Max file size" of 5, so the environment's limit applies.</p>
 </section>
 
 </div>

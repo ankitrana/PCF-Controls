@@ -9,3 +9,4 @@
 - Saved images listed newest first.
 - File name with optional date; replace the earlier image or keep them all; optional fill of the host field; white or transparent background.
 - Test harness demo mode with in-memory images.
+- Ready-to-import managed solution (`ArtSignaturePad_managed.zip`) on GitHub Releases.

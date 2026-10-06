@@ -6,6 +6,7 @@
 - Duplicate file names: Replace / Keep both / Skip.
 - Folder drops and paste (Ctrl+V) support.
 - Preview dialog for images, PDFs and text files; image thumbnails in the list (new *Show image thumbnails* setting).
+- Ready-to-import managed solution (`ArtFileDropZone_managed.zip`) on GitHub Releases.
 
 ## 0.1.0 - 2026-10-03
 - First version: drag-and-drop or browse to upload files as Note attachments, file type / size / count checks, upload queue with 3 parallel uploads and retry, list / download / delete of existing attachments, test harness demo mode.

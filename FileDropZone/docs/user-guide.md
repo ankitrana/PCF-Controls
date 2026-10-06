@@ -51,7 +51,7 @@ File Drop Zone adds a drag-and-drop upload area to any model-driven form. Files 
 
 ## 3. Install the solution
 
-1. Download the latest **managed** solution, for example `ArtFileDropZone_managed.zip`.
+1. Download `ArtFileDropZone_managed.zip` from the latest **File Drop Zone** release on the [Releases page](https://github.com/ankitrana/PCF-Controls/releases) (under *Assets*).
 2. Go to [make.powerapps.com](https://make.powerapps.com) and pick the environment (install in a sandbox or dev environment first).
 3. **Solutions** > **Import solution** > **Browse** > select the zip > **Next** > **Import**.
 4. Wait for the "Solution imported successfully" message.

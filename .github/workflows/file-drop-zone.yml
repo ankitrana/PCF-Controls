@@ -1,12 +1,15 @@
 name: File Drop Zone
 
-# Builds only when this control (or this workflow) changes
+# Builds only when this control (or this workflow) changes.
+# Pushing a tag FileDropZone-v<version> builds the managed solution and publishes a release with it.
 on:
   push:
     branches: [main]
     paths:
       - "FileDropZone/**"
       - ".github/workflows/file-drop-zone.yml"
+    tags:
+      - "FileDropZone-v*"
   pull_request:
     branches: [main]
     paths:
@@ -16,6 +19,7 @@ on:
 
 jobs:
   build:
+    if: ${{ !startsWith(github.ref, 'refs/tags/') }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -40,3 +44,63 @@ jobs:
         with:
           name: FileDropZone
           path: FileDropZone/out/controls/FileDropZone/
+
+  release:
+    if: ${{ startsWith(github.ref, 'refs/tags/FileDropZone-v') }}
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: FileDropZone
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: FileDropZone/package-lock.json
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Check tag matches manifest version
+        id: ver
+        run: |
+          $tagVersion = "${{ github.ref_name }}".Substring("FileDropZone-v".Length)
+          [xml]$manifest = Get-Content FileDropZone/ControlManifest.Input.xml
+          $manifestVersion = $manifest.manifest.control.version
+          if ($tagVersion -ne $manifestVersion) {
+            throw "Tag version $tagVersion does not match manifest version $manifestVersion"
+          }
+          "version=$manifestVersion" >> $env:GITHUB_OUTPUT
+
+      - name: Set solution version
+        run: |
+          $path = "Solution/src/Other/Solution.xml"
+          $xml = Get-Content $path -Raw
+          $xml = $xml -replace '<Version>[^<]*</Version>', "<Version>${{ steps.ver.outputs.version }}.0</Version>"
+          Set-Content $path $xml -Encoding utf8 -NoNewline
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Build managed solution
+        run: dotnet build Solution/FileDropZoneSolution.cdsproj -c Release
+
+      - name: Rename zip
+        run: |
+          New-Item -ItemType Directory -Force release | Out-Null
+          Copy-Item Solution/bin/Release/FileDropZoneSolution.zip release/ArtFileDropZone_managed.zip
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" `
+            release/ArtFileDropZone_managed.zip `
+            --title "File Drop Zone ${{ steps.ver.outputs.version }}" `
+            --notes "Download **ArtFileDropZone_managed.zip** below and import it into your environment (make.powerapps.com > Solutions > Import solution). See the [user guide](https://github.com/ankitrana/PCF-Controls/blob/main/FileDropZone/docs/user-guide.md) and [CHANGELOG](https://github.com/ankitrana/PCF-Controls/blob/main/FileDropZone/CHANGELOG.md)."

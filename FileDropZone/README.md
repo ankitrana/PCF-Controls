@@ -38,6 +38,10 @@ Add the control to **any single line text column** on the form (the control neve
 
 > Note: the environment's *Maximum file size* (System Settings > Email) applies to the base64 size, so the real file limit is about 3/4 of it (the default 5 MB setting allows files up to 3.75 MB).
 
+## Install
+
+Download **`ArtFileDropZone_managed.zip`** from the latest `FileDropZone-v*` release on the [Releases page](https://github.com/ankitrana/PCF-Controls/releases), then in [make.powerapps.com](https://make.powerapps.com) go to **Solutions** > **Import solution** and import it. The [user guide](docs/user-guide.md) has the full steps.
+
 ## Build
 
 Requirements: Node.js 18+ and the [Power Platform CLI](https://learn.microsoft.com/power-platform/developer/cli/introduction).
@@ -62,14 +66,17 @@ pac auth create --environment https://yourorg.crm.dynamics.com
 pac pcf push --publisher-prefix <yourprefix>
 ```
 
-Or package it in a solution:
+Or build the solution zips yourself (publisher AnkitRanaTech, prefix `art`). The [.NET SDK](https://dotnet.microsoft.com/download) is also needed:
 
 ```bash
-mkdir Solution && cd Solution
-pac solution init --publisher-name <PublisherName> --publisher-prefix <prefix>
-pac solution add-reference --path ..
-dotnet build -c Release
+dotnet build Solution/FileDropZoneSolution.cdsproj -c Release
 ```
+
+This writes the managed solution to `Solution/bin/Release/FileDropZoneSolution.zip`.
+
+### Releasing (maintainer)
+
+Bump the version in `ControlManifest.Input.xml`, `package.json` and `CHANGELOG.md`, commit, then push a tag `FileDropZone-v<version>`. CI checks that the tag matches the manifest, builds the managed solution and publishes a GitHub release with `ArtFileDropZone_managed.zip` attached.
 
 Then in the form designer: select a single line text column > **Components** > **+ Component** > **File Drop Zone (AnkitRana-Tech)**, set the options, save and publish.
 
