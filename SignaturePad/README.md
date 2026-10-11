@@ -2,7 +2,7 @@
 
 Sign or draw on a Dynamics 365 / Dataverse model-driven form with a mouse, pen or finger. The picture is saved as a **PNG Note attachment** (`annotation`) on the current record, for example `Signature 2026-10-05 14-30.png`, so it shows in the timeline and works with flows, reports and Word templates.
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue) ![Status](https://img.shields.io/badge/status-preview-orange) [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/signature-pad.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/signature-pad.yml)
+![Version](https://img.shields.io/badge/version-0.2.0-blue) ![Status](https://img.shields.io/badge/status-preview-orange) [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/signature-pad.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/signature-pad.yml)
 
 <img src="docs/img/signature-pad.png" width="720" alt="Signature Pad with a signature and a note" />
 

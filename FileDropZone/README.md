@@ -2,7 +2,7 @@
 
 Drag-and-drop file upload for Dynamics 365 / Dataverse model-driven forms. Files are saved as **Note attachments** (`annotation`) on the current record, so they show in the timeline and work with everything that already reads Notes.
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue) ![Status](https://img.shields.io/badge/status-preview-orange) [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml)
+![Version](https://img.shields.io/badge/version-0.3.0-blue) ![Status](https://img.shields.io/badge/status-preview-orange) [![Build](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml/badge.svg)](https://github.com/ankitrana/PCF-Controls/actions/workflows/file-drop-zone.yml)
 
 <img src="docs/img/control-uploading.png" width="720" alt="Uploading files: blocked type, duplicate prompt, large file progress, done" />
 
