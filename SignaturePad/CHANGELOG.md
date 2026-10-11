@@ -3,6 +3,7 @@
 ## 0.2.0 - 2026-10-11
 - New publisher: Montariva Technology (prefix `mrt`, namespace `MontarivaTechnology`). The solution is now `MrtSignaturePad` and the release asset `MrtSignaturePad_managed.zip`; the control shows as *Signature Pad (Montariva Technology)*.
 - Because the publisher changed, this version can't upgrade 0.1.0. If you imported it, remove the control from your forms, delete the `ArtSignaturePad` solution, then import this one.
+- Fix: with *Fill host field when saved* on, deleting the last saved image now clears the host field (it was left unchanged in some hosts, such as the test harness).
 
 ## 0.1.0 - 2026-10-05
 - First version: signature and drawing pad saved as a PNG Note attachment on the record.

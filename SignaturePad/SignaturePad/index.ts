@@ -94,7 +94,8 @@ export class SignaturePad implements ComponentFramework.ReactControl<IInputs, IO
 
     public getOutputs(): IOutputs {
         // Only written when "Fill host field when saved" is on; undefined leaves the field alone.
-        return this.hostValue === undefined ? {} : { hostField: this.hostValue ?? undefined };
+        // Cleared with "" rather than undefined: the test harness ignores undefined, and Dataverse stores an empty text value as empty either way.
+        return this.hostValue === undefined ? {} : { hostField: this.hostValue ?? "" };
     }
 
     public destroy(): void {
