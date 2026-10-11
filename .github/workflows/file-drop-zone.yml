@@ -94,7 +94,7 @@ jobs:
       - name: Rename zip
         run: |
           New-Item -ItemType Directory -Force release | Out-Null
-          Copy-Item Solution/bin/Release/FileDropZoneSolution.zip release/ArtFileDropZone_managed.zip
+          Copy-Item Solution/bin/Release/FileDropZoneSolution.zip release/MrtFileDropZone_managed.zip
 
       - name: Create release (or refresh the zip if it already exists)
         env:
@@ -102,10 +102,10 @@ jobs:
         run: |
           gh release view "${{ github.ref_name }}" *> $null
           if ($LASTEXITCODE -eq 0) {
-            gh release upload "${{ github.ref_name }}" release/ArtFileDropZone_managed.zip --clobber
+            gh release upload "${{ github.ref_name }}" release/MrtFileDropZone_managed.zip --clobber
             exit $LASTEXITCODE
           }
           gh release create "${{ github.ref_name }}" `
-            release/ArtFileDropZone_managed.zip `
+            release/MrtFileDropZone_managed.zip `
             --title "File Drop Zone ${{ steps.ver.outputs.version }}" `
-            --notes "Download **ArtFileDropZone_managed.zip** below and import it into your environment (make.powerapps.com > Solutions > Import solution). See the [user guide](https://github.com/ankitrana/PCF-Controls/blob/main/FileDropZone/docs/user-guide.md) and [CHANGELOG](https://github.com/ankitrana/PCF-Controls/blob/main/FileDropZone/CHANGELOG.md)."
+            --notes "Download **MrtFileDropZone_managed.zip** below and import it into your environment (make.powerapps.com > Solutions > Import solution). See the [user guide](https://github.com/ankitrana/PCF-Controls/blob/main/FileDropZone/docs/user-guide.md) and [CHANGELOG](https://github.com/ankitrana/PCF-Controls/blob/main/FileDropZone/CHANGELOG.md)."

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="AnkitRanaTech" constructor="FileDropZone" version="0.2.0"
-           display-name-key="File Drop Zone (AnkitRana-Tech)"
+  <control namespace="MontarivaTechnology" constructor="FileDropZone" version="0.3.0"
+           display-name-key="File Drop Zone (Montariva Technology)"
            description-key="Drag and drop files to upload them as Note attachments on the current record. Lists, downloads and deletes existing attachments."
            control-type="virtual">
     <external-service-usage enabled="false">

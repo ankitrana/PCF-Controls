@@ -27,8 +27,8 @@
 ## Install
 
 1. Open [Releases](https://github.com/ankitrana/PCF-Controls/releases) and download the managed solution for the control you want from the latest release's *Assets*:
-   - **File Drop Zone**: `ArtFileDropZone_managed.zip`
-   - **Signature Pad**: `ArtSignaturePad_managed.zip`
+   - **File Drop Zone**: `MrtFileDropZone_managed.zip`
+   - **Signature Pad**: `MrtSignaturePad_managed.zip`
 2. In [make.powerapps.com](https://make.powerapps.com), pick your environment and go to **Solutions** > **Import solution**.
 3. Add the control to a form. Each control's user guide walks through it.
 

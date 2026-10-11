@@ -1,6 +1,6 @@
 {
   "name": "signature-pad",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Signature and drawing pad PCF control that saves the image as a Note attachment in Dataverse.",
   "author": "Ankit Rana",
   "license": "MIT",

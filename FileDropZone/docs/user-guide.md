@@ -51,7 +51,7 @@ File Drop Zone adds a drag-and-drop upload area to any model-driven form. Files 
 
 ## 3. Install the solution
 
-1. Download `ArtFileDropZone_managed.zip` from the latest **File Drop Zone** release on the [Releases page](https://github.com/ankitrana/PCF-Controls/releases) (under *Assets*).
+1. Download `MrtFileDropZone_managed.zip` from the latest **File Drop Zone** release on the [Releases page](https://github.com/ankitrana/PCF-Controls/releases) (under *Assets*).
 2. Go to [make.powerapps.com](https://make.powerapps.com) and pick the environment (install in a sandbox or dev environment first).
 3. **Solutions** > **Import solution** > **Browse** > select the zip > **Next** > **Import**.
 4. Wait for the "Solution imported successfully" message.
@@ -63,12 +63,12 @@ The solution contains only the control. It does not add tables, columns, flows o
 1. In **make.powerapps.com**, open a solution (or **Tables**) > your table > **Forms** > open the main form.
 2. Add the host text column to the form if it's not there yet. A one-column section of its own works best.
 3. Select the column, then in the right-hand **Properties** pane open **Components** > **+ Component**.
-4. Choose **File Drop Zone (AnkitRana-Tech)**.
+4. Choose **File Drop Zone (Montariva Technology)**.
 5. Set the options (see [Settings reference](#5-settings-reference)), leave **Web**, **Mobile** and **Tablet** ticked, and click **Done**.
 6. Optional: in the column's Properties, tick **Hide label** to let the control use the full width.
 7. **Save and publish** the form.
 
-> Classic form editor: double-click the column > **Controls** tab > **Add Control...** > *File Drop Zone (AnkitRana-Tech)* > set the options > select the Web / Phone / Tablet radio buttons > **OK**.
+> Classic form editor: double-click the column > **Controls** tab > **Add Control...** > *File Drop Zone (Montariva Technology)* > set the options > select the Web / Phone / Tablet radio buttons > **OK**.
 
 Open any existing record to see the control.
 

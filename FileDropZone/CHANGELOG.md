@@ -1,5 +1,9 @@
 # Changelog - File Drop Zone
 
+## 0.3.0 - 2026-10-11
+- New publisher: Montariva Technology (prefix `mrt`, namespace `MontarivaTechnology`). The solution is now `MrtFileDropZone` and the release asset `MrtFileDropZone_managed.zip`; the control shows as *File Drop Zone (Montariva Technology)*.
+- Because the publisher changed, this version can't upgrade 0.2.0 or earlier. If you imported an earlier version, remove the control from your forms, delete the `ArtFileDropZone` solution, then import this one.
+
 ## 0.2.0 - 2026-10-03
 - Reads the environment's attachment rules (max upload size, blocked extensions, blocked/allowed MIME types); file type and size settings are now optional and only make the limits stricter.
 - Files over 4 MB upload in blocks (`InitializeAnnotationBlocksUpload` / `UploadBlock` / `CommitAnnotationBlocksUpload`) with % progress and cancel.

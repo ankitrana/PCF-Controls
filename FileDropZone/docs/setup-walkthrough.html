@@ -168,7 +168,7 @@ table.props{border-collapse:collapse;width:100%;font-size:14px}
 <div class="wrap">
 
 <header>
-  <div class="eyebrow">AnkitRanaTech.FileDropZone · version 0.2.0</div>
+  <div class="eyebrow">MontarivaTechnology.FileDropZone · version 0.3.0</div>
   <h1 style="margin-top:6px">Setting up the File Drop Zone on a CRM form</h1>
   <p class="lede">What the control looks like, then every screen you go through to put it on a form: what to click, what to type, and what to leave alone.</p>
   <p class="lede" style="font-size:14px">For every setting, security and update details see the full <a href="user-guide.md" style="color:var(--accent)">User guide</a> (also as Word and PDF in this folder).</p>
@@ -239,14 +239,14 @@ table.props{border-collapse:collapse;width:100%;font-size:14px}
 <section id="s1" class="step" aria-labelledby="s1-h">
   <div class="num">1</div>
   <h3 id="s1-h">Get the solution file</h3>
-  <p>Open the <a href="https://github.com/ankitrana/PCF-Controls/releases">Releases page</a>, pick the latest <b>File Drop Zone</b> release and download <code>ArtFileDropZone_managed.zip</code> under <i>Assets</i>. That's the file you import in step 2.</p>
+  <p>Open the <a href="https://github.com/ankitrana/PCF-Controls/releases">Releases page</a>, pick the latest <b>File Drop Zone</b> release and download <code>MrtFileDropZone_managed.zip</code> under <i>Assets</i>. That's the file you import in step 2.</p>
   <p>Prefer to build it yourself? You need the <b>pac CLI</b> and the <b>.NET SDK</b>. In the <code>FileDropZone</code> folder of this repository run:</p>
   <pre class="cmd">npm ci
 dotnet build Solution\FileDropZoneSolution.cdsproj -c Release
 
 <span class="ok">Build succeeded.</span>
 <span class="c">  -&gt; Solution\bin\Release\FileDropZoneSolution.zip (managed)</span></pre>
-  <p class="dim" style="color:var(--muted)">Want a quick try in a dev environment instead? Run <code>pac auth create --environment https://yourorg.crm.dynamics.com</code> then <code>pac pcf push --publisher-prefix art</code> in the FileDropZone folder, and skip to step 3.</p>
+  <p class="dim" style="color:var(--muted)">Want a quick try in a dev environment instead? Run <code>pac auth create --environment https://yourorg.crm.dynamics.com</code> then <code>pac pcf push --publisher-prefix mrt</code> in the FileDropZone folder, and skip to step 3.</p>
 </section>
 
 <section id="s2" class="step" aria-labelledby="s2-h">
@@ -265,7 +265,7 @@ dotnet build Solution\FileDropZoneSolution.cdsproj -c Release
       <div class="panel">
         <h5>Import a solution</h5>
         <div class="dim">Select a solution package to import.</div>
-        <div class="fld"><label>Solution file</label><div style="display:flex;gap:6px"><div class="in" style="flex:1">ArtFileDropZone_managed.zip</div><span class="btn hl">Browse</span></div></div>
+        <div class="fld"><label>Solution file</label><div style="display:flex;gap:6px"><div class="in" style="flex:1">MrtFileDropZone_managed.zip</div><span class="btn hl">Browse</span></div></div>
         <div class="dim">After Next: check the details and click <b>Import</b>.</div>
         <div class="btns"><span class="btn primary hl">Next</span><span class="btn">Cancel</span></div>
       </div>
@@ -276,7 +276,7 @@ dotnet build Solution\FileDropZoneSolution.cdsproj -c Release
   </div></div>
   <ul class="legend">
     <li><span class="p">1</span><span>Go to <b>make.powerapps.com</b>, check the environment at the top right, then <b>Solutions → Import solution</b>.</span></li>
-    <li><span class="p">2</span><span><b>Browse</b> and pick <code>ArtFileDropZone_managed.zip</code> (or your own build's <code>FileDropZoneSolution.zip</code>).</span></li>
+    <li><span class="p">2</span><span><b>Browse</b> and pick <code>MrtFileDropZone_managed.zip</code> (or your own build's <code>FileDropZoneSolution.zip</code>).</span></li>
     <li><span class="p">3</span><span><b>Next</b>, then <b>Import</b>. Wait for "Solution imported successfully" (about a minute).</span></li>
   </ul>
 </section>
@@ -418,13 +418,13 @@ dotnet build Solution\FileDropZoneSolution.cdsproj -c Release
           <div class="complist">
             <div><span class="ico">★</span>Star rating</div>
             <div><span class="ico">⇆</span>Toggle</div>
-            <div class="chosen hl"><span class="ico">&#x2912;</span>File Drop Zone (AnkitRana-Tech)</div>
+            <div class="chosen hl"><span class="ico">&#x2912;</span>File Drop Zone (Montariva Technology)</div>
             <div><span class="ico">≡</span>Rich text editor control</div>
           </div>
           <span class="link">Get more components</span>
         </div>
       </div>
-      <div class="dlg"><div class="t"><span>File Drop Zone (AnkitRana-Tech)</span><span>✕</span></div>
+      <div class="dlg"><div class="t"><span>File Drop Zone (Montariva Technology)</span><span>✕</span></div>
         <div style="padding:12px 14px;display:flex;flex-direction:column;gap:10px">
           <div class="cfg">
             <div class="fld"><label>Host field</label><div class="in">File drop zone <span class="dim">(bound)</span></div></div>
@@ -447,7 +447,7 @@ dotnet build Solution\FileDropZoneSolution.cdsproj -c Release
     </div>
   </div></div>
   <ul class="legend">
-    <li><span class="p">1</span><span>Pick <b>File Drop Zone (AnkitRana-Tech)</b>. Not in the list? Click <b>Get more components</b>, find it under "Build by others" (or search "File Drop"), tick it and <b>Add</b>.</span></li>
+    <li><span class="p">1</span><span>Pick <b>File Drop Zone (Montariva Technology)</b>. Not in the list? Click <b>Get more components</b>, find it under "Build by others" (or search "File Drop"), tick it and <b>Add</b>.</span></li>
     <li><span class="p">2</span><span>Fill in the properties. <b>For most forms, leave them all as they are</b>: the control then allows exactly what your environment allows. See <a href="#props" style="color:var(--accent)">the property table</a> for when to change them.</span></li>
     <li><span class="p">3</span><span>Tick <b>Web</b>, <b>Mobile</b> and <b>Tablet</b>, so it shows everywhere, not just in the browser.</span></li>
     <li><span class="p">4</span><span><b>Done</b>. Then do step 5's point 5 (untick "Show label").</span></li>
@@ -502,7 +502,7 @@ dotnet build Solution\FileDropZoneSolution.cdsproj -c Release
     <div><b>New files don't show in the Timeline.</b><span>The Timeline doesn't know about the upload. Click its refresh button.</span></div>
   </div>
   <h3 style="margin-top:8px">Installing a newer version later</h3>
-  <p>Download the newer <code>ArtFileDropZone_managed.zip</code> from the Releases page (or, for your own build, raise the version in <code>ControlManifest.Input.xml</code> and build again) and import it as in step 2; Power Apps offers an <b>Upgrade</b>. The forms that use the control pick it up on their own. If you set up 0.1.0 earlier, open that form once and clear the old "Max file size" of 5, so the environment's limit applies.</p>
+  <p>Download the newer <code>MrtFileDropZone_managed.zip</code> from the Releases page (or, for your own build, raise the version in <code>ControlManifest.Input.xml</code> and build again) and import it as in step 2; Power Apps offers an <b>Upgrade</b>. The forms that use the control pick it up on their own. If you set up 0.1.0 earlier, open that form once and clear the old "Max file size" of 5, so the environment's limit applies.</p>
 </section>
 
 </div>

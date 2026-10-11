@@ -46,7 +46,7 @@ Add the control to **any single line text column** on the form.
 
 ## Install
 
-Download **`ArtSignaturePad_managed.zip`** from the latest `SignaturePad-v*` release on the [Releases page](https://github.com/ankitrana/PCF-Controls/releases), then in [make.powerapps.com](https://make.powerapps.com) go to **Solutions** > **Import solution** and import it. The [user guide](docs/user-guide.md) has the full steps.
+Download **`MrtSignaturePad_managed.zip`** from the latest `SignaturePad-v*` release on the [Releases page](https://github.com/ankitrana/PCF-Controls/releases), then in [make.powerapps.com](https://make.powerapps.com) go to **Solutions** > **Import solution** and import it. The [user guide](docs/user-guide.md) has the full steps.
 
 ## Build
 
@@ -72,7 +72,7 @@ pac auth create --environment https://yourorg.crm.dynamics.com
 pac pcf push --publisher-prefix <yourprefix>
 ```
 
-Or build the managed solution yourself (publisher AnkitRanaTech, prefix `art`). The [.NET SDK](https://dotnet.microsoft.com/download) is also needed:
+Or build the managed solution yourself (publisher MontarivaTechnology, prefix `mrt`). The [.NET SDK](https://dotnet.microsoft.com/download) is also needed:
 
 ```bash
 dotnet build Solution/SignaturePadSolution.cdsproj -c Release
@@ -82,9 +82,9 @@ This writes the managed solution to `Solution/bin/Release/SignaturePadSolution.z
 
 ### Releasing (maintainer)
 
-Bump the version in `ControlManifest.Input.xml`, `package.json` and `CHANGELOG.md`, commit, then push a tag `SignaturePad-v<version>`. CI checks that the tag matches the manifest, builds the managed solution and publishes a GitHub release with `ArtSignaturePad_managed.zip` attached.
+Bump the version in `ControlManifest.Input.xml`, `package.json` and `CHANGELOG.md`, commit, then push a tag `SignaturePad-v<version>`. CI checks that the tag matches the manifest, builds the managed solution and publishes a GitHub release with `MrtSignaturePad_managed.zip` attached.
 
-Then in the form designer: select a single line text column > **Components** > **+ Component** > **Signature Pad (AnkitRana-Tech)**, set the options, save and publish.
+Then in the form designer: select a single line text column > **Components** > **+ Component** > **Signature Pad (Montariva Technology)**, set the options, save and publish.
 
 ## Roadmap
 

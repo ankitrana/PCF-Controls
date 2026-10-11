@@ -1,6 +1,6 @@
 {
   "name": "file-drop-zone",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Drag-and-drop file upload PCF control that saves files as Note attachments in Dataverse.",
   "author": "Ankit Rana",
   "license": "MIT",

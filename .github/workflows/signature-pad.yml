@@ -94,7 +94,7 @@ jobs:
       - name: Rename zip
         run: |
           New-Item -ItemType Directory -Force release | Out-Null
-          Copy-Item Solution/bin/Release/SignaturePadSolution.zip release/ArtSignaturePad_managed.zip
+          Copy-Item Solution/bin/Release/SignaturePadSolution.zip release/MrtSignaturePad_managed.zip
 
       - name: Create release (or refresh the zip if it already exists)
         env:
@@ -102,10 +102,10 @@ jobs:
         run: |
           gh release view "${{ github.ref_name }}" *> $null
           if ($LASTEXITCODE -eq 0) {
-            gh release upload "${{ github.ref_name }}" release/ArtSignaturePad_managed.zip --clobber
+            gh release upload "${{ github.ref_name }}" release/MrtSignaturePad_managed.zip --clobber
             exit $LASTEXITCODE
           }
           gh release create "${{ github.ref_name }}" `
-            release/ArtSignaturePad_managed.zip `
+            release/MrtSignaturePad_managed.zip `
             --title "Signature Pad ${{ steps.ver.outputs.version }}" `
-            --notes "Download **ArtSignaturePad_managed.zip** below and import it into your environment (make.powerapps.com > Solutions > Import solution). See the [user guide](https://github.com/ankitrana/PCF-Controls/blob/main/SignaturePad/docs/user-guide.md) and [CHANGELOG](https://github.com/ankitrana/PCF-Controls/blob/main/SignaturePad/CHANGELOG.md)."
+            --notes "Download **MrtSignaturePad_managed.zip** below and import it into your environment (make.powerapps.com > Solutions > Import solution). See the [user guide](https://github.com/ankitrana/PCF-Controls/blob/main/SignaturePad/docs/user-guide.md) and [CHANGELOG](https://github.com/ankitrana/PCF-Controls/blob/main/SignaturePad/CHANGELOG.md)."

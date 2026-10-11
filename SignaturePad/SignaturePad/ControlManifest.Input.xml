@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="AnkitRanaTech" constructor="SignaturePad" version="0.1.0"
-           display-name-key="Signature Pad (AnkitRana-Tech)"
+  <control namespace="MontarivaTechnology" constructor="SignaturePad" version="0.2.0"
+           display-name-key="Signature Pad (Montariva Technology)"
            description-key="Sign or draw with mouse, pen or touch. Saves the picture as a PNG Note attachment on the current record. Includes eraser, undo, redo and clear, and lets users edit or delete saved images."
            control-type="virtual">
     <external-service-usage enabled="false">

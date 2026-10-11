@@ -110,7 +110,7 @@ const spacer = () => new Paragraph({ spacing: { after: 120 }, children: [] });
 
 // ---------- content ----------
 const cover = [
-  new Paragraph({ spacing: { before: 1800, after: 0 }, children: [new TextRun({ text: "AnkitRana-Tech  ·  PCF CONTROL", bold: true, size: 20, color: BRAND, characterSpacing: 40 })] }),
+  new Paragraph({ spacing: { before: 1800, after: 0 }, children: [new TextRun({ text: "Montariva Technology  ·  PCF CONTROL", bold: true, size: 20, color: BRAND, characterSpacing: 40 })] }),
   new Paragraph({ spacing: { before: 120, after: 0 }, children: [new TextRun({ text: "File Drop Zone", bold: true, size: 72, color: DARK })] }),
   new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "User Guide", size: 44, color: MUTED })] }),
   new Paragraph({
@@ -162,7 +162,7 @@ const body = [
 
   h1("3. Install the solution", false),
   ...numbered([
-    "Download `ArtFileDropZone_managed.zip` from the latest **File Drop Zone** release on github.com/ankitrana/PCF-Controls/releases (under *Assets*).",
+    "Download `MrtFileDropZone_managed.zip` from the latest **File Drop Zone** release on github.com/ankitrana/PCF-Controls/releases (under *Assets*).",
     "Go to make.powerapps.com and pick the environment. Install in a sandbox or development environment first.",
     "Select **Solutions** > **Import solution** > **Browse**, select the zip, then **Next** > **Import**.",
     "Wait for the \"Solution imported successfully\" message.",
@@ -174,12 +174,12 @@ const body = [
     "In **make.powerapps.com**, open a solution (or **Tables**) > your table > **Forms** > open the main form.",
     "Add the host text column to the form if it's not there yet. A one-column section of its own works best.",
     "Select the column, then in the right-hand **Properties** pane open **Components** > **+ Component**.",
-    "Choose **File Drop Zone (AnkitRana-Tech)**.",
+    "Choose **File Drop Zone (Montariva Technology)**.",
     "Set the options (see section 5), leave **Web**, **Mobile** and **Tablet** ticked, and click **Done**.",
     "Optional: in the column's properties, tick **Hide label** so the control uses the full width.",
     "**Save and publish** the form, then open any existing record to see the control.",
   ]),
-  note("Classic form editor: double-click the column > **Controls** tab > **Add Control...** > File Drop Zone (AnkitRana-Tech) > set the options > select the Web / Phone / Tablet options > **OK**.", "Tip"),
+  note("Classic form editor: double-click the column > **Controls** tab > **Add Control...** > File Drop Zone (Montariva Technology) > set the options > select the Web / Phone / Tablet options > **OK**.", "Tip"),
 
   h1("5. Settings reference", false),
   table(["Setting", "Default", "What it does"], [
@@ -298,7 +298,7 @@ const doc = new Document({
         default: new Footer({ children: [new Paragraph({
           tabStops: [{ type: TabStopType.RIGHT, position: CONTENT }],
           children: [
-            new TextRun({ text: "AnkitRana-Tech  ·  github.com/ankitrana", size: 16, color: MUTED }),
+            new TextRun({ text: "Montariva Technology  ·  github.com/ankitrana", size: 16, color: MUTED }),
             new TextRun({ children: ["\tPage ", PageNumber.CURRENT, " of ", PageNumber.TOTAL_PAGES], size: 16, color: MUTED }),
           ] })] }),
         first: new Footer({ children: [new Paragraph({ children: [] })] }),
